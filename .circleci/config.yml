@@ -18,7 +18,6 @@ jobs:
 
     steps:
       - checkout
-
       # Download and cache dependencies
       - restore_cache:
           keys:
@@ -33,23 +32,28 @@ jobs:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
   test1:
+    docker:
+      # specify the version you desire here
+      - image: circleci/node:latest
     steps:
       # run tests!
       - run: yarn test
   test2:
+    docker:
+      # specify the version you desire here
+      - image: circleci/node:latest
     steps:
       - run:
-          name: Echo test
-          command: echo "asdf" && exit 0
-
+        name: Echo test
+        command: echo "asdf" && exit 0
 workflows:
   version: 2
   build_then_test:
-      jobs:
-        - build
-        - test1:
+    jobs:
+      - build
+      - test1:
           requires:
             - build
-        -test2:
+      - test2:
           requires:
             - build
