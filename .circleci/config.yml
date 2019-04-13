@@ -32,6 +32,7 @@ jobs:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
   test1:
+    working_directory: ~/repo
     docker:
       # specify the version you desire here
       - image: circleci/node:latest
