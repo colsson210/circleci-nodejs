@@ -5,6 +5,7 @@
 version: 2
 jobs:
   build:
+    working_directory: ~/project
     docker:
       # specify the version you desire here
       - image: circleci/node:8
@@ -38,7 +39,7 @@ jobs:
     steps:
       - checkout
       # run tests!
-      - run: yarn run test2
+      - run: npm test
   test2:
     docker:
       # specify the version you desire here
