@@ -27,7 +27,6 @@ jobs:
             - v1-dependencies-
 
       - run: yarn install
-      - run: yarn global add mocha
 
       - save_cache:
           paths:
@@ -40,7 +39,7 @@ jobs:
     steps:
       - checkout
       # run tests!
-      - run: yarn test
+      - run: yarn run test2
   test2:
     docker:
       # specify the version you desire here
