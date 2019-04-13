@@ -36,6 +36,7 @@ jobs:
       # specify the version you desire here
       - image: circleci/node:latest
     steps:
+      - checkout
       # run tests!
       - run: yarn test
   test2:
@@ -43,6 +44,7 @@ jobs:
       # specify the version you desire here
       - image: circleci/node:latest
     steps:
+      - checkout
       - run:
         name: Echo test
         command: echo "asdf" && exit 0
