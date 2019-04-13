@@ -32,6 +32,24 @@ jobs:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
-
+  test1:
+    steps:
       # run tests!
       - run: yarn test
+  test2:
+    steps:
+      - run:
+          name: Echo test
+          command: echo "asdf" && exit 0
+
+workflows:
+  version: 2
+  build_then_test:
+      jobs:
+        - build
+        - test1:
+          requires:
+            - build
+        -test2:
+          requires:
+            - build
